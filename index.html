@@ -1,0 +1,35 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+	<title></title> 
+	<link rel="stylesheet" href="style.css">
+</head> 
+<body> 
+	<h1>Alphabet Letter Placement Sonification</h1>
+	<p>Inspired by my hidden talent :)</p>
+	<input type="text" maxlength="1" id="letterInput" placeholder="type an UPPERCASE letter" />
+	<p id="outputMsg"></p>
+	<script>
+	  var input = document.getElementById('letterInput');
+	  var output = document.getElementById('outputMsg');
+	  input.addEventListener('input', () => {
+		var code = char.charCodeAt(0);
+		if (code >= 65 && code <= 90) {
+		  var position = code - 64;
+		  var pattern = [];
+		  for (let i = 0; i < position; i++) {
+			pattern.push(100, 50);
+		  }
+		  if (navigator.vibrate) {
+			navigator.vibrate(pattern);
+			output.textContent = `${char} is the ${position}$ letter in the alphabet!`;
+		  } else {
+			alert("Uh Oh! Vibration API is not supported by your brower :(");
+		  }
+		}
+		input.value = '';
+	  });
+
+	</script>
+</body> 
+</html>
